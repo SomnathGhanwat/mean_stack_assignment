@@ -1,0 +1,109 @@
+<!--nav.component.html-->
+<div fxFlex="100" fxLayout="row" fxLayoutGap="10px">
+  <div fxLayout="row" fxFlex="10">
+    <div fxLayout="column" fxFlex="100">
+      <div fxFlex="30" fxLayout>
+        <div fxFlex="100" fxLayoutAlign="center center">
+          <img src="../../../assets/download (1).jpeg" style="height:63px">
+        </div>
+      </div>
+
+      <div fxFlex="70">
+        <mat-nav-list>
+          <a mat-list-item [routerLink]="['listMoment']" [routerLinkActive]="['active']" (click)="listMomentIsClick()">
+            List Moment </a>
+          <a mat-list-item [routerLink]="['signup']" (click)="listMoment()"> add Moment </a>
+
+        </mat-nav-list>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="100">
+    <div fxFlex="100">
+      <mat-sidenav-container>
+
+        <mat-sidenav-content>
+          <mat-toolbar>
+
+          </mat-toolbar>
+          <div *ngIf="isChecked == false">
+            <div style="height: 100vh;" fxLayout="column" fxFlex="100" fxLayoutGap="20px">
+              <div fxFlex="20">
+                <div fxFlex="100" class="moment-shadow">
+                  <span fxLayoutAlign="start center"> Moment </span>
+                </div>
+              </div>
+              <div fxFlex="100" fxLayoutAlign="center  center">
+                <div fxFlex="90">
+                  <app-listmoment> </app-listmoment>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isMomentList == true">
+            <app-signup> </app-signup>
+          </div>
+
+          <div *ngIf="isUpdateForm == true">
+            <div fxFlex="100" fxLayout="row" fxLayoutAlign="center">
+              <div class="shadow" fxLayoutAlign="start start">
+                <form class="padding" fxFlex="100" (ngSubmit)="onSubmit()">
+
+
+
+                  <div class="title">
+
+                    <mat-form-field>
+                      <mat-label>Enter your Last Name</mat-label>
+                      <input type="email" matInput placeholder="Your Last Name">
+
+                      <mat-error>Invalid or missing email.</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="tags">
+                    <mat-form-field>
+                      <mat-label>Enter your Email</mat-label>
+                      <input type="email" matInput placeholder="Enter Email">
+                      <mat-error>Invalid or missing email.</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="upload">
+                    <div fxFlex="100" fxLayout="row" fxLayoutGap="50">
+                      <div fxFlex="50"> hello
+
+                      </div>
+                      <div fxFlex="50">
+                        <div fxFlex="100" class="box" fxLayout="column" fxLayoutAlign="center center">
+
+                          <span> Drag and drop file</span>
+                          <div fxFlex="30" fxLayoutAlign="center center">
+
+                            <input type="file" placeholder="File" style="margin-left: 50px;">
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                  <div class="padding2" fxLayoutAlign="center center" fxLayoutGap="50px">
+                    <button type="submit" mat-raised-button color="primary">Submit</button>
+                  </div>
+
+
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+    </div>
+  </div>
+
+</div>

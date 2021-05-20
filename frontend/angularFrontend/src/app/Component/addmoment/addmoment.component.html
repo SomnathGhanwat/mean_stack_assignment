@@ -1,0 +1,54 @@
+<div fxFlex="100" fxLayout="row" fxLayoutAlign="center">
+    <div class="shadow" fxLayoutAlign="start start">
+        <form class="padding" fxFlex="100" [formGroup]="addMomentForm" (ngSubmit)="onSubmit()" >
+
+
+
+            <div class="title">
+
+                <mat-form-field>
+                    <mat-label>Enter your Last Name</mat-label>
+                    <input type="email" matInput placeholder="Your Last Name" formControlName="title">
+
+                    <mat-error>Invalid or missing email.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="tags">
+                <mat-form-field>
+                    <mat-label>Enter your Email</mat-label>
+                    <input type="email" matInput placeholder="Enter Email" formControlName="tags">
+                    <mat-error>Invalid or missing email.</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="upload">
+                <div fxFlex="100" fxLayout="row" fxLayoutGap="50">
+                    <div fxFlex="50"> hello
+
+                    </div>
+                    <div fxFlex="50">
+                        <div fxFlex="100" class="box" fxLayout="column" fxLayoutAlign="center center">
+                         
+                            <span> Drag and drop file</span>
+                            <div fxFlex="30" fxLayoutAlign="center center">
+                                
+                            <input type="file" name="file" formControlName="file" placeholder="File" (change)="onFileChange($event)" style="margin-left: 50px;" >
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="padding2" fxLayoutAlign="center center" fxLayoutGap="50px">
+                <button type="submit" mat-raised-button color="primary" [disabled]="addMomentForm.invalid" >Submit</button>
+                </div>
+
+
+        </form>
+    </div>
+
+</div>

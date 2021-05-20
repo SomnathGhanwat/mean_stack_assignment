@@ -1,0 +1,118 @@
+<div fxLayout="column" fxFlex="100" class="login-component">
+    <div fxFlex="50" fxLayout="row" style="background-color: black;width: 100%" fxLayoutAlign="center center"
+        fxLayoutGap="25px">
+        <div fxLayoutAlign="center center">
+            <div style="background-color: black;">
+                <img src="../../../assets/download (1).jpeg" style="background: transparent;background-image: none;  ">
+            </div>
+        </div>
+    </div>
+
+    <div class="sub-conatiner" fxLayoutAlign="center start" fxLayoutGap="25px">
+
+
+        <div class="padding" fxLayout="column" fxFlex="100" fxLayoutGap="25px">
+
+            <div fxFlex="30" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+                <div style="font-size: 30px;font-weight:500"> Sign Up </div>
+                <div style="font-size: 20px;"> To be a member </div>
+            </div>
+
+            <div fxFlex="70" fxLayoutAlign="center center" fxLayoutGap="10px">
+                <form fxLayout="column" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                    <div fxLayout="row" fxFlex="100" fxLayoutGap="100px">
+                        <div fxLayout="column" fxFlex="45" fxLayoutAlign="end end">
+                            <div fxFlex="100">
+                                <mat-form-field>
+                                    <mat-label>Enter your First Name </mat-label>
+                                    <input type="email" matInput placeholder="Enter First Name"
+                                        formControlName="firstname">
+
+                                    <mat-error>Invalid or missing First Name.</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="100">
+                                <mat-form-field>
+                                    <mat-label>Enter your Mobile Number</mat-label>
+                                    <input type="number" matInput placeholder="Your Mobile Number"
+                                        formControlName="mobile">
+
+                                    <mat-icon matSuffix>phone</mat-icon>
+                                    <mat-error>Invalid or missing Mobile.</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="100">
+                                <mat-form-field>
+                                    <mat-label>Enter your City</mat-label>
+                                    <input type="text" matInput placeholder="Your City" formControlName="city">
+
+                                    <mat-error>Invalid or missing city.</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="column" fxFlex="45" fxLayoutAlign="start start">
+                            <div fxFlex="100">
+                                <mat-form-field>
+                                    <mat-label>Enter your Last Name</mat-label>
+                                    <input type="email" matInput placeholder="Your Last Name"
+                                        formControlName="lastname">
+
+                                    <mat-error>Invalid or missing Lastname.</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="100">
+                                <mat-form-field>
+                                    <mat-label>Enter your Email</mat-label>
+                                    <input type="email" matInput placeholder="Enter Email" formControlName="email">
+                                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                                    <mat-error>Invalid or missing email.</mat-error>
+                                </mat-form-field>
+                            </div>
+
+
+                            <div fxFlex="100">
+                                <mat-form-field>
+                                    <mat-label>Enter your password</mat-label>
+                                    <input matInput [type]="hide ? 'password' : 'text'" matInput
+                                        placeholder="Your password" formControlName="password">
+                                    <button mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                    <mat-error>Missing password.</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div fxFlex="100" fxLayout="column" fxLayoutGap="10px">
+                        <div fxFlex="50" fxLayoutAlign="center center">
+                            <button type="submit" mat-raised-button color="primary" [disabled]="signupForm.invalid">Sign
+                                Up</button>
+                        </div>
+                        <div fxFlex="50" fxLayoutAlign="center center">
+                            <p class="regular-12">Already a member ? <span
+                                    class="semi-bold-15 pointer color-persian-bl"> Sign In</span> </p>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                </form>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+</div>
