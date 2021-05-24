@@ -64,7 +64,7 @@ console.log("Ngonit",this.updateForm.title)
   deleteMoment = (data :any) => {
     console.log("Data",data._id);
     this.apiservice.DeleteMoment(data._id).subscribe((response) => {
-      console.log("data",response);
+      alert(JSON.parse(JSON.stringify(response)).message);
       this.getMoment();
     })
   }
