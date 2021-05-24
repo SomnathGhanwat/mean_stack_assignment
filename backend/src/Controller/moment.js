@@ -4,7 +4,7 @@ const {Moment} = require('../Factory/moment');
 
 let newMoment = () => {
     return {
-      //  auth :'jwt',
+        auth :'jwt',
         handler : (request,h) => {
             let response = Moment.addMoment(request);
             return response.then((value) => {
