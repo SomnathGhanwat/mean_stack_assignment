@@ -5,22 +5,37 @@ const { Promise } = require('es6-promise');
 const FS = require('fs');
 const { request } = require('http');
 
-let uploadFile = (data) => {
+let uploadFile = (data,name) => {
+    let i = 0;
 
-    const filename = data.hapi.filename;
+  /*  const filename = data.hapi.filename;
 
     let data_path;
-    console.log("Directoey",__dirname)
-    FS.writeFile(__dirname + '/upload/' + filename, data._data, (err, data) => {
+    console.log("Directoey",'./')
+    FS.writeFile('/home/ubuntu/mean_stack_assignment/frontend/angularFrontend/src/assets/' + filename, data._data, (err, data) => {
         if (err) {
             throw err;
 
-        } else {
-            data_path = __dirname + '/upload/' + filename
-        }
+        } 
     });
 
-    return __dirname + '/upload/' + filename;
+    return filename;*/
+   
+
+    let base64Image = data.split(';base64,').pop();
+    let filename = name + i + 'jpeg';
+    FS.writeFile('/home/ubuntu/mean_stack_assignment/frontend/angularFrontend/src/assets/' + filename, base64Image, { encoding: 'base64' }, (err, data) => {
+        if (err) {
+            throw err;
+
+        }
+    });
+    i = i + 1;
+
+    return  filename;
+    
+
+
 }
 
 let addMoment = (request) => {
@@ -28,23 +43,21 @@ let addMoment = (request) => {
         let shop = {};
         let image;
         if(request.payload.moment_image) {
-            image = uploadFile(request.payload.moment_image)
+            image = uploadFile(request.payload.moment_image,"moment")
         }
 
-        console.log("Image",image)
+        console.log("Image",image)  
         let create_data = {
             user_id: request.payload.user_id,
             title : request.payload.title,
-            tags  :request.payload.tags,
-           
+            tags  :request.payload.tags,           
             moment_image: image
         }
 
         Moment.momentModel.findOne({
             user_id: request.payload.user_id,
             tags  :request.payload.tags,
-            comment : request.payload.comment,
-            moment_image: image 
+         
         },(err,data) => {
             if(err) {
                 reject(err);
@@ -66,7 +79,7 @@ let addMoment = (request) => {
                            
                     
                             let response_object = {
-                                status_code :200,
+                                status_code :201,
                                 message: "New Moment Created"
                             };
                             resolve(response_object);
@@ -124,14 +137,13 @@ let updateMoment = (request) => {
 
         let image;
         if(request.payload.moment_image) {
-            image = uploadFile(request.payload.moment_image)
+            image = uploadFile(request.payload.moment_image,"update_moment")
         }
 
         let create_data = {
             user_id: request.payload.user_id,
             title : request.payload.title,
             tags  :request.payload.tags,
-            comment : request.payload.comment,
             moment_image: image
         }
 

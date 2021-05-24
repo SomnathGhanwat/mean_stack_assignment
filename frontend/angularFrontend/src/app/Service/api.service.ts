@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { Observable, Observer, Subject } from 'rxjs';
 
@@ -18,9 +19,20 @@ export class ApiService {
     this.showLoader.next(status);
   }
 
-  public createMoment = (data : any) => {
-    return this.http.post(`${this.apiURL}/moment`,data);
+  public getAllMoment = () => {
+    return this.http.get(`${this.apiURL}/allmoment`);
   } 
+
+  public DeleteMoment = (id : Number) => {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Authorization' :  JSON.parse(JSON.stringify(localStorage.getItem('token')))
+     });
+    return this.http.delete(`${this.apiURL}/deleteMoment/` + id ,{headers : headers})
+  }
+
+ 
 
   public login = (data : any) => {
     let headers = new HttpHeaders({
@@ -43,18 +55,46 @@ export class ApiService {
   public addMoment = (data : any ) => {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': '*',
+            'Authorization' :  JSON.parse(JSON.stringify(localStorage.getItem('token')))
     
      });
 
-    const formdata = new FormData();
+    /* console.log("Data", data.user , typeof data.user)
+
+    const formdata:any = new FormData();
     formdata.append('user_id', data.user );
     formdata.append("title",data.title);
     formdata.append('tags',data.tags);
-    formdata.append("moment_image",data.file);
+    formdata.append("moment_image",data.moment);
+    console.log("formaa",formdata.get('user_id') , formdata.get('title'),formdata.get('tags') , formdata.get('moment_image'))*/
    
 
-    return this.http.post(`${this.apiURL}/moment`, formdata,{headers : headers});
+    return this.http.post(`${this.apiURL}/moment`, data ,{headers : headers});
+  } 
+
+
+
+
+  public updateMoment = (data : any ,id : any) => {
+    let headers = new HttpHeaders({
+           'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Authorization' :  JSON.parse(JSON.stringify(localStorage.getItem('token')))
+    
+     });
+
+    /* console.log("Data", data.user , typeof data.user)
+
+    const formdata:any = new FormData();
+    formdata.append('user_id', data.user );
+    formdata.append("title",data.title);
+    formdata.append('tags',data.tags);
+    formdata.append("moment_image",data.moment);
+    console.log("formaa",formdata.get('user_id') , formdata.get('title'),formdata.get('tags') , formdata.get('moment_image'))*/
+   
+
+    return this.http.put(`${this.apiURL}/updateMoment/` + id, data ,{headers : headers});
   } 
 
 

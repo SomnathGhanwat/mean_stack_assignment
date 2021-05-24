@@ -5,25 +5,25 @@
 
 
             <div class="title">
-
+               
                 <mat-form-field>
-                    <mat-label>Enter your Last Name</mat-label>
+                    <mat-label>Enter your Title</mat-label>
                     <input type="email" matInput placeholder="Your Last Name" formControlName="title">
 
-                    <mat-error>Invalid or missing email.</mat-error>
+                    <mat-error>Invalid or missing title.</mat-error>
                 </mat-form-field>
             </div>
             <div class="tags">
                 <mat-form-field>
-                    <mat-label>Enter your Email</mat-label>
+                    <mat-label>Enter your Tags</mat-label>
                     <input type="email" matInput placeholder="Enter Email" formControlName="tags">
-                    <mat-error>Invalid or missing email.</mat-error>
+                    <mat-error>Invalid or missing tags.</mat-error>
                 </mat-form-field>
             </div>
 
             <div class="upload">
                 <div fxFlex="100" fxLayout="row" fxLayoutGap="50">
-                    <div fxFlex="50"> hello
+                    <div fxFlex="50"> 
 
                     </div>
                     <div fxFlex="50">
@@ -32,7 +32,7 @@
                             <span> Drag and drop file</span>
                             <div fxFlex="30" fxLayoutAlign="center center">
                                 
-                            <input type="file" name="file" formControlName="file" placeholder="File" (change)="onFileChange($event)" style="margin-left: 50px;" >
+                            <input type="file" name="moment" formControlName="moment" placeholder="File" (change)="fileEvent($event)" style="margin-left: 50px;" >
                             </div>
 
 

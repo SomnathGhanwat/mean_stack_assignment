@@ -30,3 +30,11 @@
     height: 50px;
 
   }
+  .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+  }
+  .user-image {
+    height : 40px;
+    width: 50px;
+    border-radius: 50%;
+    }

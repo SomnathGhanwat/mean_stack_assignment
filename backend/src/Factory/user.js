@@ -44,7 +44,7 @@ let userSignUp = (request,h) => {
                         reject(err);
                     } else {
                         let response_object = {
-                            status_code: 200,
+                            status_code: 201,
                             message: "Created",
                             result: "User Signup SuccessFully"
                         }

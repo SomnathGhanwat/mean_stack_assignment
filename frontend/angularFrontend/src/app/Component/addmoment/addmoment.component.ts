@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/Service/api.service';
 export class AddmomentComponent implements OnInit {
   imageSrc!: string;
   hide = true;
+  filedata :any;
   addMomentForm!: FormGroup;
   constructor(public apiservice : ApiService) { }
 
@@ -17,8 +18,9 @@ export class AddmomentComponent implements OnInit {
     this.addMomentForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     tags: new FormControl('', [Validators.required]),
-    file: new FormControl('', [Validators.required]),
-    fileSource: new FormControl('', [Validators.required])
+  
+    moment : new FormControl('', [Validators.required]),
+   
   })
   }
 
@@ -27,18 +29,18 @@ export class AddmomentComponent implements OnInit {
     const payload = {
       title : this.addMomentForm.value.title,
       tags : this.addMomentForm.value.tags,
-      file : this.addMomentForm.value.file,
-      user : localStorage.getItem('user_id'),
-      token : localStorage.getItem('token')
+      moment_image : this.addMomentForm.value.moment,
+      user_id : Number(localStorage.getItem('user_id')),
+      //token : localStorage.getItem('token')
     }
     this.apiservice.addMoment(payload).subscribe((response) => {
-      console.log("Log",response)
+     alert(JSON.parse(JSON.stringify(response)).message);
     })
   }
 
 
-
-  onFileChange(event :any) {
+  fileEvent(event :any) {
+    console.log("Event",event);
     const reader =  new FileReader();
 
     if (event.target.files && event.target.files.length) {
@@ -48,9 +50,10 @@ export class AddmomentComponent implements OnInit {
       reader.onload = () => {
 
         this.imageSrc = reader.result as string;
+        console.log("Image",this.imageSrc)
 
         this.addMomentForm.patchValue({
-          fileSource: reader.result
+          moment: this.imageSrc
         });
 
       };
@@ -58,5 +61,13 @@ export class AddmomentComponent implements OnInit {
     }
   }
   
+
+
+/*fileEvent(e :any){
+ const file = e.target.files[0];
+  this.addMomentForm.patchValue({
+    moment :file
+  })
+}*/
 
 }

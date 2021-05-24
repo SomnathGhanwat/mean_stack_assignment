@@ -4,15 +4,7 @@ const {Moment} = require('../Factory/moment');
 
 let newMoment = () => {
     return {
-        payload : {
-            output: 'stream',
-            parse: true,
-            allow: 'multipart/form-data',
-            maxBytes: 1024 * 1024 * 100,
-            timeout: false,
-            multipart : true
-        },
-      
+        auth :'jwt',
         handler : (request,h) => {
             let response = Moment.addMoment(request);
             return response.then((value) => {
@@ -45,14 +37,7 @@ let ShowAllMoment = () => {
 
 let updateMomentData = () => {
     return {
-        payload : {
-            output: 'stream',
-            parse: true,
-            allow: 'multipart/form-data',
-            maxBytes: 1024 * 1024 * 100,
-            timeout: false,
-            multipart : true
-        },
+       
         auth : 'jwt',
       
         handler : (request,h) => {
@@ -71,7 +56,8 @@ let updateMomentData = () => {
 let deleteMomentData = () => {
     return {
       
-      auth : "jwt",
+
+        auth :'jwt',
         handler : (request,h) => {
             let response = Moment.deleteMoment(request);
             return response.then((value) => {

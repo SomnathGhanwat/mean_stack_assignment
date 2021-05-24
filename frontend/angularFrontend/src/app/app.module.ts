@@ -35,7 +35,11 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { ListmomentComponent } from './Component/listmoment/listmoment.component';
 import { AddmomentComponent } from './Component/addmoment/addmoment.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator'; 
+import {MatExpansionModule} from '@angular/material/expansion';
+
+  
+
 
 
 @NgModule({
@@ -67,7 +71,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule,
     MatMenuModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

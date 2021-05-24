@@ -1,28 +1,104 @@
-<div class="mat-elevation-z8">
+<div *ngIf="isUpdateForm == true"> 
+  
+  <div class="container" fxFlex="100" fxLayout="row" fxLayoutAlign="center">
+    <div class="shadow" fxLayoutAlign="start start">
+      <form class="padding" fxFlex="100" [formGroup]="updateMomentForm" (ngSubmit)="onSubmit()">
+
+
+
+        <div class="title">
+          <span> Update Moment </span>
+          <mat-form-field>
+            <mat-label>Enter your Last Name</mat-label>
+            <input type="email" matInput placeholder="Your Title" formControlName="title">
+
+            <mat-error>Invalid or missing email.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="tags">
+          <mat-form-field>
+            <mat-label>Enter your Email</mat-label>
+            <input type="email" matInput placeholder=" Your tags" formControlName="tags">
+            <mat-error>Invalid or missing   email.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="upload">
+          <div fxFlex="100" fxLayout="row" fxLayoutGap="50">
+            <div fxFlex="50"> hello
+
+            </div>
+            <div fxFlex="50">
+              <div fxFlex="100" class="box" fxLayout="column" fxLayoutAlign="center center">
+
+                <span> Drag and drop file</span>
+                <div fxFlex="30" fxLayoutAlign="center center">
+
+                  <input type="file" formControlName="file" placeholder="File" style="margin-left: 50px;" (click)="fileEvent($event)">
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="padding2" fxLayoutAlign="center center" fxLayoutGap="50px">
+          <button type="submit" mat-raised-button color="primary" [disabled]="updateMomentForm.invalid">Submit</button>
+        </div>
+
+
+      </form>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div *ngIf="isTable == true" class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
         <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <ng-container matColumnDef="Sr.no">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Sr.no </th>
+          <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}}</td>
         </ng-container>
       
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <ng-container matColumnDef="Image">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+         
+          <td mat-cell *matCellDef="let element">  <img src='../../../assets/download (2).jpeg'  style="height: 30px;width: 30px;border-radius: 50%;">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </td>
         </ng-container>
       
         <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
-          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        <ng-container matColumnDef="Title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+          <td mat-cell *matCellDef="let element"> {{element.title}} </td>
         </ng-container>
       
         <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
-          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        <ng-container matColumnDef="Tags">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Tags </th> 
+          <td mat-cell *matCellDef="let element"> <div   fxLayoutAlign="start center"> 
+            <div fxLayout="row" fxLayoutAlign="space-between" style="border: 1px solid black;border-radius: 12px;background-color:darkgray;">
+            <div>{{element.tags}} </div>
+            
+            <div><mat-icon>close</mat-icon> </div>
+          </div>
+          </div> </td>
+        </ng-container>
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let element"> 
+            <div fxLayoutGap="10px">
+          <mat-icon style="cursor: pointer;" (click)="updateMoment(element)"> update</mat-icon>
+          <mat-icon style="cursor: pointer;" (click)="deleteMoment(element)">delete</mat-icon>
+            </div> </td>
         </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

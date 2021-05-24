@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
       } else {
         localStorage.setItem("token",this.allresponse.accessToken);
         localStorage.setItem("user_id",this.allresponse.result._id)
+        this.router.navigate(['dashboard'])
       }
    
    this.isSpinner = false;

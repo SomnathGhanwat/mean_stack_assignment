@@ -8,7 +8,7 @@ let momentSchema = new Mongoose.Schema({
     },
     moment_image : { type : String, required : true, index: { unique : true}},
     tags: { type: String},
-    comment : {type: String},
+    title : {type : String},
 
 },
 { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } },

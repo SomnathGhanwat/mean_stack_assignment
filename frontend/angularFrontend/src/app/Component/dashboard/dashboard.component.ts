@@ -12,9 +12,10 @@ export class DashboardComponent implements OnInit {
   isChecked = false;
   isMomentList = false;
   isUpdateForm = false;
+  isAddMoment = false
   hide = true;
 
-  constructor(public activateRoute : ActivatedRoute) { }
+  constructor(public activateRoute : ActivatedRoute,public router : Router) { }
 
   ngOnInit(): void {
   
@@ -33,12 +34,19 @@ export class DashboardComponent implements OnInit {
       listMomentIsClick() {
     this.isChecked = false
     this.isMomentList = false;
+    this.isAddMoment = false;
 
   }
 
   listMoment() {
     this.isMomentList = true;
     this.isChecked = true;
+    this.isAddMoment = true;
+  }
+
+  logout = () => {
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
   }
 
 }
