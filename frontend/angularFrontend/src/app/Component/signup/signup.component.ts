@@ -49,5 +49,9 @@ export class SignupComponent implements OnInit {
 
     })
   }
+
+  signin = () => {
+    this.router.navigate(['login'])
+  }
 }
 

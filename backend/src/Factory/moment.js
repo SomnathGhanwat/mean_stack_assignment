@@ -23,7 +23,7 @@ let uploadFile = (data,name) => {
    
 
     let base64Image = data.split(';base64,').pop();
-    let filename = name + i + 'jpeg';
+    let filename = name + i + '.png';
     FS.writeFile('/home/ubuntu/mean_stack_assignment/frontend/angularFrontend/src/assets/' + filename, base64Image, { encoding: 'base64' }, (err, data) => {
         if (err) {
             throw err;
